@@ -347,6 +347,46 @@ h1 .b{display:block;font-size:clamp(2.1rem,10.4vw,3.4rem);white-space:nowrap}
 @keyframes tick{0%{transform:translateY(-60%) scaleY(.6);opacity:0}100%{transform:none;opacity:1}}
 @keyframes calWiggle{0%,80%,100%{transform:rotate(-4deg)}85%{transform:rotate(3deg) scale(1.05)}90%{transform:rotate(-6deg)}95%{transform:rotate(-3deg)}}
 
+/* ============ MODAL DE CONFIRMACIÓN ============ */
+.rs h2{margin:4px 0 0}
+.rs .sub{margin-bottom:14px}
+.qty-lbl{display:block;font-family:var(--f-chunk);font-size:1.2rem;color:var(--navy);text-align:center;clear:both}
+.qty-help{margin:2px 0 12px;text-align:center;font-weight:700;font-size:.88rem;color:#4d6b75}
+.stepper{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:10px}
+.step{width:60px;height:60px;border:0;border-radius:50%;cursor:pointer;font:400 2.1rem/1 var(--f-chunk);color:#fff;
+  background:linear-gradient(180deg,#2ad3d6,#0b97b6);box-shadow:0 5px 0 #077591;touch-action:manipulation;
+  transition:transform .15s cubic-bezier(.3,1.6,.5,1),opacity .2s,filter .2s}
+.step:active{transform:translateY(3px) scale(.94);box-shadow:0 2px 0 #077591}
+.step:disabled{opacity:.35;filter:grayscale(.6);cursor:not-allowed}
+.step:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.qty{position:relative;width:96px;height:96px;display:grid;place-items:center;border-radius:50%;
+  background:conic-gradient(#ff5c78 0 45deg,#fff 0 90deg,#ff5c78 0 135deg,#fff 0 180deg,#ff5c78 0 225deg,#fff 0 270deg,#ff5c78 0 315deg,#fff 0);
+  box-shadow:0 8px 14px rgba(0,60,80,.22)}
+.qty::before{content:"";position:absolute;inset:17px;border-radius:50%;background:#fffaf0;box-shadow:inset 0 3px 6px rgba(0,0,0,.12)}
+.qty output{position:relative;font-family:var(--f-chunk);font-size:2.6rem;line-height:1;color:var(--navy)}
+.qty output.bump{animation:bumpN .45s cubic-bezier(.3,1.8,.5,1)}
+.people{display:flex;justify-content:center;gap:4px;min-height:30px;font-size:1.45rem;margin:4px 0 2px}
+.people span{animation:pop .4s cubic-bezier(.3,1.8,.5,1) both}
+.max-note{margin:0 0 14px;text-align:center;font-size:.82rem;font-weight:800;color:var(--coral);min-height:1.2em}
+.chat{border-radius:18px;padding:12px 12px 14px;margin:0 0 16px;
+  background:#e7dfd4 radial-gradient(rgba(0,0,0,.05) 1px,transparent 1.5px) 0 0/14px 14px;box-shadow:inset 0 0 0 2px #fff}
+.chat-top{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:800;color:#5b6b70;margin-bottom:8px}
+.chat-top i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:#25d366;color:#fff;font-size:.85rem}
+.bubble-msg{position:relative;margin-left:auto;max-width:92%;width:fit-content;padding:9px 12px 18px;border-radius:12px 0 12px 12px;
+  background:#d9fdd3;color:#111b21;font:600 .98rem/1.4 var(--f-body);white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.13)}
+.bubble-msg::after{content:"";position:absolute;top:0;right:-8px;border-left:9px solid #d9fdd3;border-bottom:10px solid transparent}
+.bubble-msg mark{background:#ffe27a;color:inherit;border-radius:4px;padding:0 3px;font-weight:900}
+.bubble-msg time{position:absolute;right:9px;bottom:3px;font-size:.66rem;color:#667781;font-weight:700}
+.send{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:62px;border:0;border-radius:999px;cursor:pointer;
+  font:900 1.05rem/1.1 var(--f-body);letter-spacing:.5px;color:#fff;text-decoration:none;
+  background:linear-gradient(180deg,#3be37a,#1fb855);box-shadow:0 6px 0 #158a3e,0 12px 20px rgba(10,100,50,.25);
+  transition:transform .15s cubic-bezier(.3,1.6,.5,1)}
+.send:active{transform:translateY(4px) scale(.97);box-shadow:0 2px 0 #158a3e}
+.send:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+.send svg{width:24px;height:24px;flex:none}
+.send-note{margin:10px 0 0;text-align:center;font-size:.8rem;font-weight:700;color:#4d6b75}
+@keyframes bumpN{0%{transform:scale(.5)}100%{transform:scale(1)}}
+
 @media (max-width:340px){ .date{grid-template-columns:1fr;justify-items:center;text-align:center} .cd{width:100%} .duo{grid-template-columns:1fr} .ideas{grid-template-columns:1fr} }
 @media (min-width:768px){ main{padding-top:50px} .palm{width:300px}.palm.l{left:4vw}.palm.r{right:4vw;width:260px} }
 
@@ -475,15 +515,14 @@ h1 .b{display:block;font-size:clamp(2.1rem,10.4vw,3.4rem);white-space:nowrap}
     <span class="ico" aria-hidden="true">👥</span>
     <div>
       <b>¡Confírmanos tu asistencia!</b>
-      <p>Es muy importante que nos confirmes y nos digas <strong>cuántas personas asistirán</strong> (contándote a ti). Toca el botón de abajo y escribe el número en el mensaje.</p>
+      <p>Es muy importante que nos confirmes y nos digas <strong>cuántas personas asistirán</strong> (contándote a ti). Toca el botón de abajo, elige cuántos van y envía tu confirmación.</p>
     </div>
   </section>
 
   <nav class="btns" aria-label="Acciones">
-    <a class="btn b-wa" target="_blank" rel="noopener"
-       href="https://wa.me/527773764554?text=%C2%A1Hola%21%20%F0%9F%8C%B4%E2%98%80%EF%B8%8F%0AConfirmo%20mi%20asistencia.%0A%0A%F0%9F%91%A5%20Seremos%3A%20___%20personas.%0A%0A%C2%A1Nos%20vemos%21%20%F0%9F%8F%8A%E2%80%8D%E2%99%82%EF%B8%8F%F0%9F%8C%8A">
+    <button class="btn b-wa" type="button" id="openRsvp" aria-haspopup="dialog" aria-controls="rsvpModal">
       <span class="ic" aria-hidden="true">💬</span><span class="tx">CONFIRMAR ASISTENCIA</span>
-    </a>
+    </button>
     <a class="btn b-map" target="_blank" rel="noopener"
        href="https://www.google.com/maps/search/?api=1&query=Jard%C3%ADn%20La%20Playa%2C%20Av.%20Miguel%20Hidalgo%202000%2C%20Emiliano%20Zapata%2C%20Morelos%2C%2062588%2C%20M%C3%A9xico">
       <span class="ic" aria-hidden="true">📍</span><span class="tx">VER UBICACIÓN</span>
@@ -503,6 +542,37 @@ h1 .b{display:block;font-size:clamp(2.1rem,10.4vw,3.4rem);white-space:nowrap}
     <span class="ball" aria-hidden="true"></span>
   </footer>
 </main>
+
+<!-- Modal de confirmación -->
+<div class="modal rs" id="rsvpModal" role="dialog" aria-modal="true" aria-labelledby="rsTitle" aria-hidden="true">
+  <div class="shade" data-close></div>
+  <div class="sheet" tabindex="-1">
+    <button class="x" type="button" data-close>CERRAR ×</button>
+    <h2 id="rsTitle">💬 CONFIRMAR ASISTENCIA</h2>
+    <p class="sub">Cumpleaños Lucho 52 · Domingo 25 de octubre</p>
+
+    <span class="qty-lbl" id="qtyLbl">¿Cuántas personas asistirán?</span>
+    <p class="qty-help">Cuéntate a ti también · máximo 5</p>
+    <div class="stepper" role="group" aria-labelledby="qtyLbl">
+      <button class="step" type="button" id="qMinus" aria-label="Quitar una persona">−</button>
+      <div class="qty"><output id="qVal" aria-live="polite">1</output></div>
+      <button class="step" type="button" id="qPlus" aria-label="Agregar una persona">+</button>
+    </div>
+    <div class="people" id="qPeople" aria-hidden="true"></div>
+    <p class="max-note" id="qMax"></p>
+
+    <div class="chat" aria-label="Vista previa del mensaje">
+      <div class="chat-top"><i aria-hidden="true">✓</i>Así se enviará tu mensaje:</div>
+      <div class="bubble-msg" id="qPreview"></div>
+    </div>
+
+    <a class="send" id="qSend" target="_blank" rel="noopener" href="#">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+      ENVIAR POR WHATSAPP
+    </a>
+    <p class="send-note">Se abrirá WhatsApp con el mensaje listo, solo toca enviar.</p>
+  </div>
+</div>
 
 <!-- Modal de vestimenta -->
 <div class="modal" id="wear" role="dialog" aria-modal="true" aria-labelledby="wearTitle" aria-hidden="true">
@@ -646,45 +716,83 @@ h1 .b{display:block;font-size:clamp(2.1rem,10.4vw,3.4rem);white-space:nowrap}
     var cdTimer = setInterval(function () { if (!tickCountdown()) clearInterval(cdTimer); }, 1000);
   }
 
-  /* ---- Modal de vestimenta ---- */
-  var modal = document.getElementById('wear');
-  var sheet = modal.querySelector('.sheet');
-  var opener = document.getElementById('openWear');
-  var closeTimer = null;
-
-  function openModal() {
+  /* ---- Modales (genérico) ---- */
+  var openModalEl = null, lastOpener = null, closeTimer = null;
+  function openModal(modal, opener) {
     clearTimeout(closeTimer);
+    openModalEl = modal; lastOpener = opener;
     modal.classList.remove('closing');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('lock');
     requestAnimationFrame(function () {
       modal.classList.add('open');
-      sheet.scrollTop = 0;
+      modal.querySelector('.sheet').scrollTop = 0;
       modal.querySelector('.x').focus({ preventScroll: true });
     });
   }
   function closeModal() {
-    if (!modal.classList.contains('open')) return;
+    var modal = openModalEl;
+    if (!modal || !modal.classList.contains('open')) return;
     modal.classList.add('closing');
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
+    openModalEl = null;
     closeTimer = setTimeout(function () {
       modal.classList.remove('closing');
       document.body.classList.remove('lock');
-      opener.focus({ preventScroll: true });
+      if (lastOpener) lastOpener.focus({ preventScroll: true });
     }, reduce ? 0 : 320);
   }
-  opener.addEventListener('click', function () { setTimeout(openModal, reduce ? 0 : 140); });
-  modal.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', closeModal); });
+  function wire(openerId, modalId, onOpen) {
+    var opener = document.getElementById(openerId), modal = document.getElementById(modalId);
+    opener.addEventListener('click', function () {
+      if (onOpen) onOpen();
+      setTimeout(function () { openModal(modal, opener); }, reduce ? 0 : 140);
+    });
+    modal.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', closeModal); });
+  }
   document.addEventListener('keydown', function (e) {
+    if (!openModalEl) return;
     if (e.key === 'Escape') closeModal();
-    if (e.key === 'Tab' && modal.classList.contains('open')) {
-      var f = modal.querySelectorAll('button');
+    if (e.key === 'Tab') {
+      var f = openModalEl.querySelectorAll('button:not([disabled]), a[href]');
       var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
+
+  /* ---- Confirmación: número de personas (1 a 5) ---- */
+  var PHONE = '527773764554', MAX = 5, MIN = 1, qty = 1;
+  var qVal = document.getElementById('qVal'), qMinus = document.getElementById('qMinus'), qPlus = document.getElementById('qPlus');
+  var qPeople = document.getElementById('qPeople'), qMax = document.getElementById('qMax');
+  var qPreview = document.getElementById('qPreview'), qSend = document.getElementById('qSend');
+  var faces = ['🙋', '🧑', '👩', '👨', '🧒'];
+  function peopleLine(n) { return n === 1 ? '👥 Seré: 1 persona.' : '👥 Seremos: ' + n + ' personas.'; }
+  function buildMsg(n) { return '¡Hola! 🌴☀️\nConfirmo mi asistencia.\n\n' + peopleLine(n) + '\n\n¡Nos vemos! 🏊‍♂️🌊'; }
+  function renderQty(animate) {
+    qVal.textContent = qty;
+    if (animate && !reduce) { qVal.classList.remove('bump'); void qVal.offsetWidth; qVal.classList.add('bump'); }
+    qMinus.disabled = qty <= MIN;
+    qPlus.disabled = qty >= MAX;
+    qMax.textContent = qty >= MAX ? 'Máximo 5 personas por confirmación 🙌' : '';
+    qPeople.innerHTML = faces.slice(0, qty).map(function (f) { return '<span>' + f + '</span>'; }).join('');
+    var now = new Date();
+    var hh = now.getHours(), mm = String(now.getMinutes()).padStart(2, '0');
+    var time = (hh % 12 || 12) + ':' + mm + ' ' + (hh < 12 ? 'a.m.' : 'p.m.');
+    qPreview.innerHTML = '¡Hola! 🌴☀️\nConfirmo mi asistencia.\n\n' +
+      (qty === 1 ? '👥 Seré: <mark>1 persona</mark>.' : '👥 Seremos: <mark>' + qty + ' personas</mark>.') +
+      '\n\n¡Nos vemos! 🏊‍♂️🌊<time>' + time + ' ✓✓</time>';
+    qSend.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(buildMsg(qty));
+  }
+  qMinus.addEventListener('click', function () { if (qty > MIN) { qty--; renderQty(true); } });
+  qPlus.addEventListener('click', function () { if (qty < MAX) { qty++; renderQty(true); } });
+  renderQty(false);
+  wire('openRsvp', 'rsvpModal', function () { renderQty(false); });
+
+  /* ---- Modal de vestimenta ---- */
+  wire('openWear', 'wear');
+  var modal = document.getElementById('wear');
 
   /* ---- Pestañas ellos / ellas ---- */
   var tabs = modal.querySelectorAll('[role="tab"]');
