@@ -216,20 +216,21 @@ h1 .b{display:block;font-size:clamp(2.1rem,10.4vw,3.4rem);white-space:nowrap}
 .x:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
 .sheet h2{margin:4px 0 0;font-family:var(--f-chunk);font-weight:400;font-size:1.65rem;color:var(--navy);line-height:1.1}
 .sheet .sub{margin:4px 0 16px;font-weight:800;color:var(--deep)}
-.ideas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:0;list-style:none;clear:both}
-.ideas li{display:flex;align-items:center;gap:8px;background:#fff;border-radius:14px;padding:12px 10px;font-weight:800;font-size:.95rem;
-  box-shadow:0 3px 0 #d5eef3;opacity:0;transform:translateY(10px)}
-.ideas li span{font-size:1.45rem;line-height:1}
+.ideas{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin:0;padding:0;list-style:none;clear:both}
+.ideas li{display:flex;align-items:center;gap:8px;padding:9px 2px;font-weight:700;font-size:.98rem;color:#3b2312;
+  border-bottom:2px dotted rgba(20,184,200,.35);cursor:default;opacity:0;transform:translateY(10px)}
+.ideas li span{font-size:1.3rem;line-height:1}
 .modal.open .ideas li{animation:pop .5s cubic-bezier(.2,.9,.3,1.25) forwards}
 .modal.open .ideas li:nth-child(1){animation-delay:.12s}.modal.open .ideas li:nth-child(2){animation-delay:.18s}
 .modal.open .ideas li:nth-child(3){animation-delay:.24s}.modal.open .ideas li:nth-child(4){animation-delay:.30s}
 .modal.open .ideas li:nth-child(5){animation-delay:.36s}.modal.open .ideas li:nth-child(6){animation-delay:.42s}
 .quote{margin:16px 0 18px;text-align:center;font-family:var(--f-hand);font-size:1.3rem;line-height:1.25;color:var(--ink)}
 .tabs{display:flex;gap:6px;background:#d8f3f7;padding:5px;border-radius:999px;margin-bottom:12px}
-.tabs button{flex:1;border:0;border-radius:999px;padding:10px;min-height:42px;font:900 .95rem var(--f-body);color:var(--deep);background:transparent;cursor:pointer;transition:background .25s,color .25s}
+.tabs button{flex:1;border:0;border-radius:999px;padding:10px 4px;min-height:42px;font:900 .9rem var(--f-body);color:var(--deep);background:transparent;cursor:pointer;transition:background .25s,color .25s}
 .tabs button[aria-selected="true"]{background:var(--turq);color:#fff;box-shadow:0 3px 0 #0b8d9c}
 .gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .gallery[hidden]{display:none}
+.gallery img:last-child:nth-child(odd){grid-column:1/-1;width:70%;justify-self:center}
 .gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:16px;display:block;background:#cdeef3;
   box-shadow:0 6px 12px rgba(0,60,80,.18);border:3px solid #fff}
 .gallery img:nth-child(odd){transform:rotate(-1.5deg)}.gallery img:nth-child(even){transform:rotate(1.5deg)}
@@ -483,20 +484,32 @@ h1 .b{display:block;font-size:clamp(2.1rem,10.4vw,3.4rem);white-space:nowrap}
     <div class="tabs" role="tablist" aria-label="Inspiración">
       <button role="tab" aria-selected="true" aria-controls="g-ellos" id="t-ellos">Para ellos</button>
       <button role="tab" aria-selected="false" aria-controls="g-ellas" id="t-ellas">Para ellas</button>
+      <button role="tab" aria-selected="false" aria-controls="g-todos" id="t-todos">Ambiente</button>
     </div>
     <div class="gallery" id="g-ellos" role="tabpanel" aria-labelledby="t-ellos">
       <img src="img/ellos-1.jpg" alt="Camisa blanca de lino con short verde y sandalias" loading="lazy" width="420" height="560">
       <img src="img/ellos-2.jpg" alt="Conjunto de camisa y short color arena" loading="lazy" width="420" height="560">
       <img src="img/ellos-3.jpg" alt="Camisa blanca de lino con short azul marino" loading="lazy" width="420" height="560">
       <img src="img/ellos-4.jpg" alt="Camisa blanca con short café y gorra" loading="lazy" width="420" height="560">
+      <img src="img/ellos-5.jpg" alt="Camisa floreada con pantalón blanco de lino" loading="lazy" width="420" height="560">
+      <img src="img/ellos-6.jpg" alt="Camisa hawaiana con bermuda caqui y sandalias" loading="lazy" width="420" height="560">
+      <img src="img/ellos-7.jpg" alt="Camisas tropicales con bermudas de distintos colores" loading="lazy" width="420" height="560">
     </div>
     <div class="gallery" id="g-ellas" role="tabpanel" aria-labelledby="t-ellas" hidden>
       <img src="img/ellas-1.jpg" alt="Blusa tejida blanca sobre traje de baño con flor en el cabello" loading="lazy" width="420" height="560">
       <img src="img/ellas-2.jpg" alt="Top de bikini con falda larga blanca" loading="lazy" width="420" height="560">
       <img src="img/ellas-3.jpg" alt="Vestidos largos con estampado de flores tropicales" loading="lazy" width="420" height="560">
       <img src="img/ellas-4.jpg" alt="Top café con pareo estampado y sombrero" loading="lazy" width="420" height="560">
+      <img src="img/ellas-5.jpg" alt="Traje de baño azul con pareo estampado y sombrero" loading="lazy" width="420" height="560">
+      <img src="img/ellas-6.jpg" alt="Camisa tropical abierta con short blanco y sombrero" loading="lazy" width="420" height="560">
+      <img src="img/ellas-7.jpg" alt="Top rosa con falda larga de flores y collar hawaiano" loading="lazy" width="420" height="560">
+      <img src="img/ellas-8.jpg" alt="Kimono floreado con short beige y sombrero" loading="lazy" width="420" height="560">
     </div>
-    <p class="gallery-note">Solo es inspiración, ¡lo importante es venir fresco! ☀️</p>
+    <div class="gallery" id="g-todos" role="tabpanel" aria-labelledby="t-todos" hidden>
+      <img src="img/todos-1.jpg" alt="Pareja con collares hawaianos y corona de flores" loading="lazy" width="420" height="560">
+      <img src="img/todos-2.jpg" alt="Amigos con camisas hawaianas y collares de flores jugando limbo" loading="lazy" width="420" height="560">
+    </div>
+    <p class="gallery-note">Solo es inspiración: collares hawaianos y flores en el cabello también son bienvenidos. ¡Lo importante es venir fresco! ☀️</p>
   </div>
 </div>
 
