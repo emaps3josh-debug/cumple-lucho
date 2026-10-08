@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#5ec8f2">
 <title>Cumpleaños Lucho 52 🌴 ¡Los esperamos!</title>
-<meta name="description" content="A partir de 12:00 PM · Habrá alberca · Temática: PLAYA · Jardín La Playa">
+<meta name="description" content="Domingo 25 de octubre · A partir de 12:00 PM · Habrá alberca · Temática: PLAYA · Jardín La Playa">
 <!-- Vista previa en WhatsApp: cambia TU-PROYECTO por el nombre real de tu enlace de Vercel -->
 <meta property="og:title" content="Cumpleaños Lucho 52 🎉🌴 ¡Los esperamos!">
-<meta property="og:description" content="A partir de 12:00 PM · Habrá alberca 🏊‍♂️ · Temática: PLAYA">
+<meta property="og:description" content="Domingo 25 de octubre · 12:00 PM · Habrá alberca 🏊‍♂️ · Temática: PLAYA">
 <meta property="og:image" content="https://TU-PROYECTO.vercel.app/img/preview.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
@@ -321,12 +321,38 @@ h1 .b{display:block;font-size:clamp(2.1rem,10.4vw,3.4rem);white-space:nowrap}
   80%,100%{box-shadow:0 6px 0 #077591,0 14px 22px rgba(0,80,110,.3),0 0 0 16px rgba(20,184,200,0)}}
 .b-wa{animation:pop .8s cubic-bezier(.2,.9,.3,1.25) var(--d) both, float 3.6s ease-in-out calc(var(--d) + .8s) infinite, waPulse 2s ease-out calc(var(--d) + 1s) infinite}
 
-@media (max-width:340px){ .duo{grid-template-columns:1fr} .ideas{grid-template-columns:1fr} }
+/* ============ FECHA + CONTADOR ============ */
+.date{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:16px 14px 16px 16px;border-radius:22px;
+  background:linear-gradient(180deg,#ffffff,#effcfd);border:3px solid #fff;box-shadow:0 12px 24px rgba(20,60,80,.24)}
+.cal{width:84px;border-radius:14px;overflow:hidden;text-align:center;background:#fff;transform:rotate(-4deg);
+  box-shadow:0 6px 0 #d7eef2,0 10px 16px rgba(0,60,80,.18);animation:calWiggle 4s ease-in-out 3.2s infinite}
+.cal .m{display:block;background:var(--coral);color:#fff;font:900 .78rem/1 var(--f-body);letter-spacing:1.5px;padding:7px 0 6px;position:relative}
+.cal .m::before,.cal .m::after{content:"";position:absolute;top:-4px;width:7px;height:12px;border-radius:4px;background:var(--navy)}
+.cal .m::before{left:20px}.cal .m::after{right:20px}
+.cal .d{display:block;font-family:var(--f-chunk);font-size:2.9rem;line-height:1;color:var(--navy);padding-top:4px}
+.cal .w{display:block;font-weight:900;font-size:.8rem;color:var(--deep);padding:0 0 8px}
+.date h3{margin:0;font-family:var(--f-chunk);font-weight:400;font-size:clamp(1.2rem,5.6vw,1.45rem);line-height:1.1;color:var(--navy)}
+.date .left{margin:6px 0 6px;font-weight:800;font-size:.85rem;color:var(--deep)}
+.cd{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.cd div{position:relative;text-align:center;border-radius:12px;padding:7px 2px 5px;
+  background:linear-gradient(180deg,#2ad3d6,#0b97b6);box-shadow:0 4px 0 #077591;overflow:hidden}
+.cd div::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,60,80,.25)}
+.cd b{display:block;font-family:var(--f-chunk);font-weight:400;font-size:clamp(1.45rem,7vw,1.85rem);line-height:1;color:#fff;
+  text-shadow:0 2px 0 rgba(0,60,90,.35);font-variant-numeric:tabular-nums}
+.cd b.tick{animation:tick .55s cubic-bezier(.3,1.6,.5,1)}
+.cd small{display:block;font-weight:900;font-size:.68rem;color:#dffbff;letter-spacing:.5px;margin-top:2px}
+.today{display:none;margin:4px 0 0;font-family:var(--f-sign);font-size:1.5rem;color:var(--coral);line-height:1.1}
+.date.is-today .cd,.date.is-today .left{display:none}
+.date.is-today .today{display:block;animation:jump 2.6s ease-in-out infinite}
+@keyframes tick{0%{transform:translateY(-60%) scaleY(.6);opacity:0}100%{transform:none;opacity:1}}
+@keyframes calWiggle{0%,80%,100%{transform:rotate(-4deg)}85%{transform:rotate(3deg) scale(1.05)}90%{transform:rotate(-6deg)}95%{transform:rotate(-3deg)}}
+
+@media (max-width:340px){ .date{grid-template-columns:1fr;justify-items:center;text-align:center} .cd{width:100%} .duo{grid-template-columns:1fr} .ideas{grid-template-columns:1fr} }
 @media (min-width:768px){ main{padding-top:50px} .palm{width:300px}.palm.l{left:4vw}.palm.r{right:4vw;width:260px} }
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important}
-  .in,.btn,.ideas li,.bday span,.bday .age{opacity:1!important;transform:none!important}
+  .in,.btn,.ideas li,.bday span,.bday .age,.cal{opacity:1!important;transform:none!important}
   .cf{display:none}
   .btn::after{display:none}
 }
@@ -390,6 +416,20 @@ h1 .b{display:block;font-size:clamp(2.1rem,10.4vw,3.4rem);white-space:nowrap}
       </svg>
     </div>
   </header>
+
+  <section class="date in" id="fecha" style="--d:1.7s">
+    <div class="cal" aria-hidden="true"><span class="m">OCTUBRE</span><span class="d">25</span><span class="w">Domingo</span></div>
+    <div>
+      <h3>Domingo 25 de octubre, 2026</h3>
+      <p class="left">⏳ Faltan:</p>
+      <div class="cd" role="timer" aria-live="off" aria-label="Tiempo que falta para la fiesta">
+        <div><b id="cd-d">--</b><small>días</small></div>
+        <div><b id="cd-h">--</b><small>horas</small></div>
+        <div><b id="cd-m">--</b><small>minutos</small></div>
+      </div>
+      <p class="today" id="cd-today">¡Hoy es la fiesta! 🎉🌴</p>
+    </div>
+  </section>
 
   <section class="duo">
     <div class="wood-light time in" style="--d:1.8s">
@@ -573,6 +613,38 @@ h1 .b{display:block;font-size:clamp(2.1rem,10.4vw,3.4rem);white-space:nowrap}
       (function (el) { setTimeout(function () { el.remove(); }, 950); })(c);
     }
   });
+
+  /* ---- Contador: domingo 25 oct 2026, 12:00 PM hora del centro de México (UTC-6) ---- */
+  var target = new Date('2026-10-25T12:00:00-06:00').getTime();
+  var dateBox = document.getElementById('fecha');
+  var els = { d: document.getElementById('cd-d'), h: document.getElementById('cd-h'), m: document.getElementById('cd-m') };
+  var todayMsg = document.getElementById('cd-today');
+  var last = {};
+  function setNum(k, v) {
+    var t = String(v).padStart(2, '0');
+    if (last[k] === t) return;
+    els[k].textContent = t;
+    if (last[k] !== undefined && !reduce) {
+      els[k].classList.remove('tick'); void els[k].offsetWidth; els[k].classList.add('tick');
+    }
+    last[k] = t;
+  }
+  function tickCountdown() {
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      dateBox.classList.add('is-today');
+      todayMsg.textContent = diff > -12 * 3600e3 ? '¡Hoy es la fiesta! 🎉🌴' : '¡Gracias por acompañarnos! 🌴';
+      return false;
+    }
+    var mins = Math.ceil(diff / 60000);
+    setNum('d', Math.floor(mins / 1440));
+    setNum('h', Math.floor((mins % 1440) / 60));
+    setNum('m', mins % 60);
+    return true;
+  }
+  if (tickCountdown()) {
+    var cdTimer = setInterval(function () { if (!tickCountdown()) clearInterval(cdTimer); }, 1000);
+  }
 
   /* ---- Modal de vestimenta ---- */
   var modal = document.getElementById('wear');
